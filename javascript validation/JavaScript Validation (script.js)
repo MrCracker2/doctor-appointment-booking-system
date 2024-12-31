@@ -1,0 +1,35 @@
+// Function to validate the login form
+function validateLoginForm() {
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    let isValid = true;
+
+    // Email validation
+    if (!email.value || !isValidEmail(email.value)) {
+        email.classList.add("is-invalid");
+        document.getElementById("email-error").style.display = "block";
+        isValid = false;
+    } else {
+        email.classList.remove("is-invalid");
+        document.getElementById("email-error").style.display = "none";
+    }
+
+    // Password validation
+    if (!password.value) {
+        password.classList.add("is-invalid");
+        document.getElementById("password-error").style.display = "block";
+        isValid = false;
+    } else {
+        password.classList.remove("is-invalid");
+        document.getElementById("password-error").style.display = "none";
+    }
+
+    return isValid;
+}
+
+// Helper function to validate email format
+function isValidEmail(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+}
